@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Color list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit colors</h1>
+	
+	<table class="table table-striped">
+		<tr>
+		    <th>Category</th>
+		    <th>Nr</th>
+		    <th>Name</th>
+		    <th>Stock</th>
+		    
+		  
+		</tr>  
+    	<tr th:each = "color : ${colors}">
+    		<td th:text="${color.category.name}"></td>
+    		<td th:text="${color.nr}"></td> 
+    		<td th:text="${color.name}"></td>
+    		<td th:text="${color.stock} "></td> 		
+ 			<td><a sec:authorize="hasAuthority ('ADMIN')"  th:href="@{/delete/{id}(id=${color.id})}">Delete</a></td> 
+ 			<td><a sec:authorize="hasAuthority ('ADMIN')"  th:href="@{/edit/{id}(id=${color.id})}">Edit</a></td>   		
+    	</tr>
+     </table>
+	<div>
+		<form th:object="${color}" th:action="@{save}" action="#" method="post">
+		  	<label for="bname">Nr</label>
+			<input type="text" id="nr" th:field="*{nr}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="aname">Name</label>
+			<input type="text" id="aname" th:field="*{name}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="year">Stock</label>
+			<input type="text" id="stock" th:field="*{stock}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="catlist">Category</label>
+			 <select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${category}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

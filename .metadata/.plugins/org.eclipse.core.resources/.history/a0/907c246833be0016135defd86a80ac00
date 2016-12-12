@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Colorlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="col-md-4">
+		<h1>Color database</h1>
+	</div>
+	<div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	
+    <table class="table table-striped">
+		<tr>
+		    <th>Category</th>
+		    <th>Nr</th>
+		    <th>Name</th>
+		    <th>Stock</th>
+		    
+		  
+		</tr>  
+    	<tr th:each = "color : ${colors}">
+    		<td th:text="${color.category.name}"></td>
+    		<td th:text="${color.nr}"></td> 
+    		<td th:text="${color.name}"></td>
+    		<td th:text="${color.stock} "></td> 		
+ 			<td><a sec:authorize="hasAuthority ('ADMIN')"  th:href="@{/delete/{id}(id=${color.id})}">Delete</a></td>    		
+    	</tr>
+     </table>
+     
+	 <a sec:authorize="hasAuthority ('ADMIN')" href="/addcolorspages">Add Colors</a>
+	 
+	 <div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div>
+	 
+ 	
+</body>
+</html>

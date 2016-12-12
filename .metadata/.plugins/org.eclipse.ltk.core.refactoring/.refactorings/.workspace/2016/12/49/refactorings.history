@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;bookstoreOnetoMany&apos;" deleteContents="false" description="Delete resource &apos;bookstoreOnetoMany&apos;" element1="/bookstoreOnetoMany" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1481282495049"/>&#x0A;<refactoring comment="Delete resource &apos;gs-accessing-data-rest&apos;" deleteContents="false" description="Delete resource &apos;gs-accessing-data-rest&apos;" element1="/gs-accessing-data-rest" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1481282521277"/>
+</session>

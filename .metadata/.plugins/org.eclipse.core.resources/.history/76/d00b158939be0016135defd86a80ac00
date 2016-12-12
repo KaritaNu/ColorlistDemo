@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Color list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add colors</h1>
+	<div>
+		<form th:object="${color}" th:action="@{save}" action="#" method="post">
+
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="year">Stock</label>
+			<input type="text" id="stock" th:field="*{stock}" />
+			
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
